@@ -1,3 +1,5 @@
+import { t } from './i18n.js';
+
 export function element(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -36,5 +38,3 @@ export function numberInput(value, label) {
   input.setAttribute('aria-label', label);
   return input;
 }
-import { t } from './i18n.js';
-

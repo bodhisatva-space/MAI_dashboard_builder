@@ -147,6 +147,9 @@ function showAddModal() {
   title.maxLength = 80;
   title.placeholder = t('titlePlaceholder');
   title.addEventListener('input', () => title.setCustomValidity(''));
+  title.addEventListener('invalid', () => {
+    if (title.validity.valueMissing) title.setCustomValidity(t('titleRequired'));
+  });
   const submit = element('button', 'button primary', t('addWidget'));
   submit.type = 'submit';
   form.append(group, field(t('title'), title), submit);

@@ -10,6 +10,9 @@ export function editWidget(widget, onSave) {
   title.required = true;
   title.maxLength = 80;
   title.addEventListener('input', () => title.setCustomValidity(''));
+  title.addEventListener('invalid', () => {
+    if (title.validity.valueMissing) title.setCustomValidity(t('titleRequired'));
+  });
   form.append(field(t('title'), title));
   let text;
   if (widget.type === 'note') {
@@ -124,6 +127,9 @@ function renderTasks(widget, body, actions) {
   input.setAttribute('aria-label', t('newTask'));
   input.dataset.control = 'task-input';
   input.addEventListener('input', () => input.setCustomValidity(''));
+  input.addEventListener('invalid', () => {
+    if (input.validity.valueMissing) input.setCustomValidity(t('taskRequired'));
+  });
   const add = element('button', 'button secondary', '+');
   add.type = 'submit';
   add.setAttribute('aria-label', t('addTask'));
@@ -187,6 +193,9 @@ function renderChart(widget, body, actions, status) {
   input.value = values.join(', ');
   input.dataset.control = 'chart-values';
   input.addEventListener('input', () => input.setCustomValidity(''));
+  input.addEventListener('invalid', () => {
+    if (input.validity.valueMissing) input.setCustomValidity(t('invalidChart'));
+  });
   const submit = element('button', 'button secondary', t('updateChart'));
   submit.type = 'submit';
   submit.dataset.control = 'chart-submit';

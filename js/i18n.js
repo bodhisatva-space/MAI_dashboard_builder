@@ -5,7 +5,7 @@ const messages = { ru, en };
 let locale = 'ru';
 
 export function normalizeLocale(value) {
-  return Object.hasOwn(messages, value) ? value : 'ru';
+  return typeof value === 'string' && Object.hasOwn(messages, value) ? value : 'ru';
 }
 
 export function setLocale(value) {
