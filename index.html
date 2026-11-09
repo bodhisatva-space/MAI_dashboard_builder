@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" data-i18n-content="pageDescription" content="Личный дашборд: заметки, счётчики, задачи и графики. Все данные хранятся в вашем браузере.">
+  <title data-i18n="pageTitle">Мой дашборд — конструктор</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="js/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#dashboard" data-i18n="skipToWidgets">К виджетам</a>
+  <header class="app-header">
+    <a class="brand" href="./" data-i18n-aria-label="home" aria-label="Конструктор дашборда — главная">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span><span data-i18n="brand">дашборд</span><span class="brand-dot">.</span></span>
+    </a>
+    <span class="header-caption" data-i18n="headerCaption">Ваше пространство для важного</span>
+    <div class="header-controls">
+      <select id="locale-select" data-i18n-aria-label="language" aria-label="Язык">
+        <option value="ru" lang="ru">Русский</option>
+        <option value="en" lang="en">English</option>
+      </select>
+      <label class="theme-control"><span aria-hidden="true">◐</span><input id="theme-toggle" type="checkbox" role="switch"><span data-i18n="darkTheme">Тёмная тема</span></label>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="page-heading" aria-labelledby="page-title">
+      <div><p class="eyebrow" data-i18n="workspace">ЛИЧНОЕ ПРОСТРАНСТВО</p><h1 id="page-title" data-i18n="dashboardTitle">Мой дашборд</h1><p class="subtitle" data-i18n="subtitle">Соберите всё, что важно, в одном месте.</p></div>
+      <span class="storage-badge" id="storage-status"><span aria-hidden="true">●</span> Хранится в этом браузере</span>
+    </section>
+
+    <nav class="toolbar" data-i18n-aria-label="dashboardControls" aria-label="Управление дашбордом">
+      <div class="toolbar-group"><button class="button primary" type="button" data-action="add"><span aria-hidden="true">＋</span><span data-i18n="addWidget">Добавить виджет</span></button><span class="widget-count" id="widget-count" role="status">Виджетов: 0</span></div>
+      <button class="button subtle" id="reset-button" type="button" data-action="reset" data-i18n="resetDashboard">Сбросить дашборд</button>
+    </nav>
+
+    <p class="grid-hint" id="grid-hint" data-i18n="dragHint" hidden>Перетаскивайте за ⠿ или меняйте порядок кнопками со стрелками.</p>
+    <section id="dashboard" class="dashboard" data-i18n-aria-label="widgets" aria-label="Виджеты дашборда" tabindex="-1"></section>
+    <section class="empty-state" id="empty-state" aria-labelledby="empty-title">
+      <div class="empty-art" aria-hidden="true"><span>≡</span><span>＋</span><span>▥</span></div>
+      <p class="eyebrow" data-i18n="emptyEyebrow">НАЧНИТЕ С ЧИСТОГО ЛИСТА</p><h2 id="empty-title" data-i18n="emptyTitle">Место для ваших идей</h2>
+      <p><span data-i18n="emptyDescription">Добавьте заметку, список дел, счётчик или график.</span><br><span data-i18n="emptyDescriptionMore">Ваш дашборд будет таким, каким вы его соберёте.</span></p>
+      <button class="button primary" type="button" data-action="add"><span aria-hidden="true">＋</span><span data-i18n="addFirstWidget">Добавить первый виджет</span></button>
+      <span class="empty-footnote" data-i18n="emptyFootnote">Без регистрации. Всё остаётся у вас.</span>
+    </section>
+    <footer class="page-footer"><span data-i18n="footer">Простой порядок в повседневных делах.</span><span data-i18n="footerPrivacy">Только вы и ваши данные</span></footer>
+  </main>
+
+  <div class="modal-overlay" id="modal-overlay" hidden>
+    <section class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
+      <header class="modal-header"><h2 id="modal-title"></h2><button class="icon-button" id="modal-close" type="button" data-i18n-aria-label="closeModal" aria-label="Закрыть окно">×</button></header>
+      <div id="modal-content"></div>
+    </section>
+  </div>
+  <div class="toasts" id="toasts" role="status" aria-live="polite" aria-atomic="false"></div>
+</body>
+</html>
